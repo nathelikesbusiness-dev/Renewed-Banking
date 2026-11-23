@@ -1,5 +1,6 @@
 <section class="loading-container">
     <section class="loading-content">
+        <div class="loading-orbit"></div><div class="loading-copy"><span>SECURE CHANNEL</span><strong>SYNCING ACCOUNTS</strong><small>Verifying encrypted ledger data</small></div>
         <div class="loading-spinner">
             <div></div>
             <div></div>
@@ -18,37 +19,14 @@
 </section>
 
 <style>
-    .loading-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    .loading-container { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center; background: rgba(1,8,10,.86); }
+    .loading-content { position: relative; width: 28rem; height: 20rem; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(145deg, #10272e, #071317); border: 1px solid rgba(103,245,255,.25); border-radius: 1.2rem; box-shadow: 0 2rem 6rem rgba(0,0,0,.6); }
+    .loading-orbit { position: absolute; width: 13rem; height: 13rem; border: 1px solid rgba(103,245,255,.22); border-radius: 50%; animation: orbit 4s linear infinite; }
+    .loading-copy { position: absolute; bottom: 2rem; text-align: center; }
+    .loading-copy span, .loading-copy small { display: block; color: var(--clr-muted); font-size: .6rem; letter-spacing: .15em; }
+    .loading-copy strong { display: block; margin: .4rem 0; color: var(--clr-cyan); font: 600 .9rem "Sora", sans-serif; letter-spacing: .08em; }
 
-    .loading-content {
-        max-width: 50rem;
-        max-height: 25rem;
-        width: 100%;
-        height: 100%;
-        background-color: var(--clr-primary);
-        padding: 5rem;
-        border-radius: 1rem;
-
-    }
-
-    .loading-spinner {
-        color: official;
-        display: inline-block;
-        position: relative;
-        width: 80px;
-        height: 80px;
-        left: 40%;
-        top: 25%;
-    }
+    .loading-spinner { color: var(--clr-cyan); display: inline-block; position: relative; width: 80px; height: 80px; }
     .loading-spinner div {
         transform-origin: 40px 40px;
         animation: loading-spinner 1.2s linear infinite;
@@ -112,13 +90,7 @@
         transform: rotate(330deg);
         animation-delay: 0s;
     }
-    @keyframes loading-spinner {
-        0% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
+    @keyframes loading-spinner { 0% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes orbit { to { transform: rotate(360deg); } }
 
 </style>

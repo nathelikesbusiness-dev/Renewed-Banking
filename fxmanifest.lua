@@ -1,6 +1,6 @@
 fx_version 'cerulean'
 game 'gta5'
-version '2.1.4'
+version '2.1.5'
 
 description 'Renewed Banking'
 Author "uShifty#1733"
@@ -30,7 +30,9 @@ ui_page 'web/public/index.html'
 files {
   'web/public/index.html',
   'web/public/**/*',
-  'locales/*.json'
+  'locales/*.json',
+  "web/public/fonts/*.woff2",
+  "web/public/fonts.css"
 }
 
 provide 'qb-management'

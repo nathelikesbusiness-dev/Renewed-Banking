@@ -36,8 +36,7 @@
 <section class="transaction">
     <h5>
         <span class="title-container" class:withdrawTitle={transaction.trans_type === "withdraw"}>
-            {transaction.title}
-            <p>[{transaction.trans_type.toUpperCase()}]</p>
+            <span class="transaction-icon"><i class="fa-solid" class:fa-arrow-down={transaction.trans_type === "withdraw"} class:fa-arrow-up={transaction.trans_type !== "withdraw"}></i></span><span>{transaction.title}</span><p>{transaction.trans_type.toUpperCase()}</p>
         </span>
         <span class="trans_id" class:withdrawId={transaction.trans_type === "withdraw"}>{transaction.trans_id}</span>
     </h5>
@@ -59,87 +58,19 @@
 </section>
 
 <style>
-    .transaction {
-        background-color: var(--clr-primary-light);
-        padding: 1.5rem;
-        border-radius: 6px;
-        font-size: 1.5rem;
-        font-weight: 300;
-        box-shadow: 3px 5px 37px 4px rgba(48,48,48,0.38);
-        -webkit-box-shadow: 3px 5px 37px 4px rgba(48,48,48,0.38);
-        -moz-box-shadow: 3px 5px 37px 4px rgba(48,48,48,0.38);
-    }
-
-    .transaction:not(:last-child) {
-        margin-bottom: 1.5rem;
-    }
-    .title-container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .title-container > p {
-        background-color: var(--clr-green);
-        color: #0f745e;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-    }
-    .title-container.withdrawTitle > p {
-        background-color: var(--clr-orange);
-        color: #754a1a;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-    }
-    .trans_id {
-        color: #ced3eb;
-        background-color: var(--clr-green);
-        color: #0f745e;
-        padding: 0.3rem 0.8rem;
-        border-radius: 6px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .trans_id.withdrawId {
-        background-color: var(--clr-orange);
-        color: #754a1a;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-    }
-
-    .transaction h5 {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 0.5rem;
-        margin-bottom: 1rem;
-        border-bottom: 3px solid #fff;
-    }
-
-    .transaction h4 {
-        display: flex;
-        justify-content: space-between;
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-    }
-    .transaction h4 span:first-child {
-        font-size: 1.4rem;
-        color: var(--clr-green);
-    }
-    .transaction h4 span.withdraw {
-        color: var(--clr-orange);
-    }
-    .transaction h4 span:nth-child(2) {
-        margin-top: 0.5rem;
-        margin-left: 0.2rem;
-        color: #ced3eb;
-    }
-    .transaction h6 {
-        color: #B6BACF;
-        margin: 1rem 0 1.5rem;
-}
-    .transaction h6 span {
-        margin-top: 0.5rem;
-    }
+    .transaction { padding: 1.15rem 1.3rem; margin-bottom: .7rem; border: 1px solid rgba(255,255,255,.07); border-radius: 1rem; background: rgba(17,35,41,.7); box-shadow: 0 1rem 2rem rgba(0,0,0,.13); animation: row-in 350ms ease both; }
+    .transaction:hover { border-color: rgba(103,245,255,.35); background: rgba(20,43,50,.82); }
+    .title-container { display: flex; align-items: center; gap: .6rem; }
+    .transaction-icon { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: .6rem; color: #05282b; background: var(--clr-teal); }
+    .withdrawTitle .transaction-icon { color: #ffb4c1; background: rgba(255,120,145,.2); }
+    .title-container > p { padding: .3rem .5rem; border-radius: .35rem; color: var(--clr-teal); background: rgba(31,199,189,.1); font-size: .57rem; letter-spacing: .1em; }
+    .withdrawTitle > p { color: #ff9db0; background: rgba(255,120,145,.1); }
+    .trans_id { color: var(--clr-muted); font-size: .62rem; letter-spacing: .04em; }
+    .transaction h5 { display: flex; align-items: center; justify-content: space-between; padding-bottom: .8rem; margin-bottom: 1rem; border-bottom: 1px solid var(--clr-line); font-size: .9rem; }
+    .transaction h4 { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1.1rem; font-size: .76rem; color: var(--clr-muted); }
+    .transaction h4 span:first-child { color: var(--clr-cyan); font: 600 1rem "Sora", sans-serif; }
+    .transaction h4 span.withdraw { color: #ff9db0; }
+    .transaction h4 span:nth-child(2) { color: var(--clr-white); }
+    .transaction h6 { margin: 0; color: var(--clr-muted); font-size: .72rem; font-weight: 400; }
+    @keyframes row-in { from { opacity: 0; transform: translateX(.5rem); } to { opacity: 1; transform: translateX(0); } }
 </style>
